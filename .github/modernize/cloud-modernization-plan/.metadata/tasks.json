@@ -18,7 +18,8 @@
         "passBuild": "true",
         "generateNewUnitTests": "false",
         "passUnitTests": "true"
-      }
+      },
+      "status": "started"
     },
     {
       "type": "security",

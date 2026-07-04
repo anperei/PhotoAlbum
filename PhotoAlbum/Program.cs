@@ -1,4 +1,7 @@
+using Azure.Identity;
+using Azure.Storage.Blobs;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Azure;
 using PhotoAlbum.Data;
 using PhotoAlbum.Services;
 
@@ -10,6 +13,21 @@ builder.Services.AddRazorPages();
 // Add DbContext
 builder.Services.AddDbContext<PhotoAlbumContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Register Azure Blob Storage clients using DefaultAzureCredential (Managed Identity)
+builder.Services.AddAzureClients(clientBuilder =>
+{
+    clientBuilder.AddBlobServiceClient(builder.Configuration.GetSection("Storage"));
+    clientBuilder.UseCredential(new DefaultAzureCredential());
+});
+
+// Register BlobContainerClient as singleton — derived from the singleton BlobServiceClient
+builder.Services.AddSingleton(sp =>
+{
+    var blobServiceClient = sp.GetRequiredService<BlobServiceClient>();
+    var containerName = builder.Configuration["Storage:ContainerName"] ?? "photos";
+    return blobServiceClient.GetBlobContainerClient(containerName);
+});
 
 // Register PhotoService
 builder.Services.AddScoped<IPhotoService, PhotoService>();
@@ -23,13 +41,6 @@ builder.Services.Configure<Microsoft.AspNetCore.Http.Features.FormOptions>(optio
 });
 
 var app = builder.Build();
-
-// Ensure uploads directory exists
-var uploadsPath = Path.Combine(app.Environment.ContentRootPath, "wwwroot", "uploads");
-if (!Directory.Exists(uploadsPath))
-{
-    Directory.CreateDirectory(uploadsPath);
-}
 
 // Run database migrations on startup in all environments (skip only when flagged as test)
 var isTestEnvironment = app.Configuration.GetValue<bool>("IsTestEnvironment");
