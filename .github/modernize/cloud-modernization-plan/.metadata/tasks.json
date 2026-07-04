@@ -1,0 +1,53 @@
+{
+  "$schema": "tasks-schema.json",
+  "description": "Tasks template for PhotoAlbum cloud modernization plan.",
+  "tasks": [
+    {
+      "type": "transform",
+      "id": "001-transform-migrate-local-storage-to-azure-blob",
+      "description": "Migrate PhotoAlbum photo file operations from local disk storage to Azure Blob Storage.",
+      "reason": "The application currently stores photo binaries in local file paths, which limits cloud scalability and portability. Migrating to Azure Blob Storage aligns storage with cloud-native hosting and centralized durability.",
+      "requirements": "Migrate upload, retrieval, and deletion flows so photo binaries are stored and served from Azure Blob Storage while preserving existing user-visible behavior and metadata persistence. Use Azure-native authentication for storage access and keep current validation behavior (file type, size, and metadata extraction).",
+      "skills": [
+        {
+          "name": "migration-azure-storage-blob",
+          "location": "builtin"
+        }
+      ],
+      "successCriteria": {
+        "passBuild": "true",
+        "generateNewUnitTests": "false",
+        "passUnitTests": "true"
+      }
+    },
+    {
+      "type": "security",
+      "id": "002-security-remediate-dependency-cves",
+      "description": "Scan project dependencies for known CVEs and remediate vulnerabilities.",
+      "reason": "Dependency vulnerabilities can introduce exploitable risks during and after modernization. Security remediation is required in every modernization plan before deployment.",
+      "requirements": "Scan all project dependencies for known CVEs and upgrade vulnerable dependencies to minimum patched versions. If any fix requires a major version bump, document impacted packages and breaking-change risk, then verify the project builds and tests pass after remediation.",
+      "environmentConfiguration": ".NET SDK and project runtime established in repository build environment.",
+      "dependencies": [
+        "001-transform-migrate-local-storage-to-azure-blob"
+      ],
+      "skills": [
+        {
+          "name": "validate-cves-and-fix",
+          "location": "builtin"
+        }
+      ],
+      "successCriteria": {
+        "passBuild": "true",
+        "generateNewUnitTests": "false",
+        "passUnitTests": "true"
+      }
+    }
+  ],
+  "metadata": {
+    "planName": "cloud-modernization-plan",
+    "projectName": "PhotoAlbum",
+    "language": "dotnet",
+    "createdAt": "2026-07-04T11:20:15Z",
+    "version": "1.0"
+  }
+}
