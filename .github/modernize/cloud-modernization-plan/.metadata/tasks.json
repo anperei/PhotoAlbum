@@ -19,7 +19,13 @@
         "generateNewUnitTests": "false",
         "passUnitTests": "true"
       },
-      "status": "started"
+      "status": "success",
+      "summary": "Migrated photo upload, retrieval, and deletion from local disk to Azure Blob Storage. Added Azure.Storage.Blobs, Azure.Identity, Microsoft.Extensions.Azure packages. Updated PhotoService, Program.cs, appsettings.json, and PhotoFile.cshtml.cs. Updated tests with Moq-based blob client mocks. Build: 0 errors, Tests: 7/7 passed.",
+      "successCriteriaStatus": {
+        "passBuild": "true",
+        "generateNewUnitTests": "false",
+        "passUnitTests": "true"
+      }
     },
     {
       "type": "security",
@@ -38,6 +44,13 @@
         }
       ],
       "successCriteria": {
+        "passBuild": "true",
+        "generateNewUnitTests": "false",
+        "passUnitTests": "true"
+      },
+      "status": "success",
+      "summary": "Scanned 13 NuGet dependencies for CVEs. No vulnerabilities found. No dependency upgrades required. Build: passed, Tests: 7/7 passed.",
+      "successCriteriaStatus": {
         "passBuild": "true",
         "generateNewUnitTests": "false",
         "passUnitTests": "true"
