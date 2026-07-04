@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "parameters": "",
+  "projects": [
+    {
+      "path": "C:/AppDev/Modernize-MicroHack-September/repos/PhotoAlbum/PhotoAlbum/PhotoAlbum.csproj",
+      "frameworks": [
+        {
+          "framework": "net10.0",
+          "topLevelPackages": [
+            {
+              "id": "Azure.Identity",
+              "requestedVersion": "1.21.0",
+              "resolvedVersion": "1.21.0"
+            },
+            {
+              "id": "Azure.Storage.Blobs",
+              "requestedVersion": "12.28.0",
+              "resolvedVersion": "12.28.0"
+            },
+            {
+              "id": "Microsoft.EntityFrameworkCore.Design",
+              "requestedVersion": "10.0.0",
+              "resolvedVersion": "10.0.0"
+            },
+            {
+              "id": "Microsoft.EntityFrameworkCore.SqlServer",
+              "requestedVersion": "10.0.0",
+              "resolvedVersion": "10.0.0"
+            },
+            {
+              "id": "Microsoft.Extensions.Azure",
+              "requestedVersion": "1.8.0",
+              "resolvedVersion": "1.8.0"
+            },
+            {
+              "id": "SixLabors.ImageSharp",
+              "requestedVersion": "3.1.11",
+              "resolvedVersion": "3.1.11"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:/AppDev/Modernize-MicroHack-September/repos/PhotoAlbum/PhotoAlbum.Tests/PhotoAlbum.Tests.csproj",
+      "frameworks": [
+        {
+          "framework": "net10.0",
+          "topLevelPackages": [
+            {
+              "id": "coverlet.collector",
+              "requestedVersion": "6.0.2",
+              "resolvedVersion": "6.0.2"
+            },
+            {
+              "id": "Microsoft.AspNetCore.Mvc.Testing",
+              "requestedVersion": "10.0.0",
+              "resolvedVersion": "10.0.0"
+            },
+            {
+              "id": "Microsoft.EntityFrameworkCore.InMemory",
+              "requestedVersion": "10.0.0",
+              "resolvedVersion": "10.0.0"
+            },
+            {
+              "id": "Microsoft.NET.Test.Sdk",
+              "requestedVersion": "17.12.0",
+              "resolvedVersion": "17.12.0"
+            },
+            {
+              "id": "Moq",
+              "requestedVersion": "4.20.72",
+              "resolvedVersion": "4.20.72"
+            },
+            {
+              "id": "xunit",
+              "requestedVersion": "2.9.2",
+              "resolvedVersion": "2.9.2"
+            },
+            {
+              "id": "xunit.runner.visualstudio",
+              "requestedVersion": "2.8.2",
+              "resolvedVersion": "2.8.2"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
